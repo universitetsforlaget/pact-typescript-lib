@@ -1,3 +1,3 @@
 export * from './PactManager';
 export * from './cleanContracts';
-export * from './mergeContracts';
+export * from './publishContracts';
