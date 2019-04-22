@@ -1,0 +1,21 @@
+{
+  "name": "@universitetsforlaget/pact",
+  "version": "0.1.0-SNAPSHOT",
+  "description": "Pact framework utilities",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "repository": "https://github.com/universitetsforlaget/pact-typescript-lib",
+  "author": "Audun Halland <audun.halland@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "rm -rf ./dist && tsc"
+  },
+  "devDependencies": {
+    "@types/node": "^11.13.6",
+    "@types/rimraf": "^2.0.2",
+    "typescript": "^3.3.4000"
+  },
+  "dependencies": {
+    "rimraf": "^2.6.3"
+  }
+}
