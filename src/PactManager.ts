@@ -1,6 +1,7 @@
 import fs from 'fs';
-import path from 'path';
 import { Pact } from "@pact-foundation/pact";
+
+import { logFilePath, managerPactDir } from './paths';
 
 export interface PactManagerConfig {
   uniqueIndex: number;
@@ -8,8 +9,6 @@ export interface PactManagerConfig {
   consumer: string;
   providers: string[];
 }
-
-const LOG_DIR = 'logs';
 
 /**
  * PactManager to simplify pact server management when working with
@@ -22,7 +21,7 @@ export class PactManager {
   constructor(config: PactManagerConfig) {
     this.config = config;
 
-    const dir = this.pactDir();
+    const dir = managerPactDir(config.uniqueIndex);
 
     if (fs.existsSync(dir)) {
       throw new Error(`
@@ -64,12 +63,8 @@ export class PactManager {
       provider,
       port,
       host: 'localhost',
-      log: path.resolve(
-        process.cwd(),
-        LOG_DIR,
-        `manager${this.config.uniqueIndex}-mockserver-${provider}:${port}-integration.log`
-      ),
-      dir: this.pactDir(),
+      log: logFilePath(`manager${this.config.uniqueIndex}-mockserver-${provider}:${port}-integration.log`),
+      dir: managerPactDir(this.config.uniqueIndex),
       logLevel: 'error',
       spec: 3,
       pactfileWriteMode: 'overwrite',
@@ -89,6 +84,4 @@ export class PactManager {
 
     return this.config.basePort + (this.config.uniqueIndex * totalProviders) + indexOfConfig;
   }
-
-  private pactDir = () => path.resolve(process.cwd(), `pacts/manager${this.config.uniqueIndex}`);
 }
