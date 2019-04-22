@@ -1,3 +1,4 @@
+import fs from 'fs';
 import path from 'path';
 import { Pact } from "@pact-foundation/pact";
 
@@ -11,8 +12,8 @@ export interface PactManagerConfig {
 const LOG_DIR = 'logs';
 
 /**
- * PactManager to simplify pact server management when working with jest
- * parallel tests.
+ * PactManager to simplify pact server management when working with
+ * jest parallel tests.
  */
 export class PactManager {
   readonly config: PactManagerConfig;
@@ -20,6 +21,15 @@ export class PactManager {
 
   constructor(config: PactManagerConfig) {
     this.config = config;
+
+    const dir = this.pactDir();
+
+    if (fs.existsSync(dir)) {
+      throw new Error(`
+        Path ${dir} already exists. Check that uniqueIndex passed to PactManager is in fact a unique index,
+        and check that cleanContracts() has been executed before test runs.
+      `);
+    }
   }
 
   protected startPactServer = async (
@@ -48,6 +58,7 @@ export class PactManager {
     provider: string,
   ): Pact => {
     const port = this.allocatePort(provider);
+
     return new Pact({
       consumer: this.config.consumer,
       provider,
@@ -58,7 +69,7 @@ export class PactManager {
         LOG_DIR,
         `manager${this.config.uniqueIndex}-mockserver-${provider}:${port}-integration.log`
       ),
-      dir: path.resolve(process.cwd(), `pacts/manager${this.config.uniqueIndex}`),
+      dir: this.pactDir(),
       logLevel: 'error',
       spec: 3,
       pactfileWriteMode: 'overwrite',
@@ -78,4 +89,6 @@ export class PactManager {
 
     return this.config.basePort + (this.config.uniqueIndex * totalProviders) + indexOfConfig;
   }
+
+  private pactDir = () => path.resolve(process.cwd(), `pacts/manager${this.config.uniqueIndex}`);
 }
