@@ -16,6 +16,8 @@
     "typescript": "^3.3.4000"
   },
   "dependencies": {
+    "@pact-foundation/pact": "^8.2.0",
+    "@pact-foundation/pact-node": "^8.1.2",
     "rimraf": "^2.6.3"
   }
 }
