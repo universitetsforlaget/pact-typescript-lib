@@ -44,12 +44,20 @@ export class PactManager {
 
   // Must run this function after each use of a manager in a test
   finalize = async (): Promise<void> => {
+    let error;
     for (const runningServer of this.runningServers) {
       try {
         await runningServer.verify();
+      } catch (err) {
+        if (!error) {
+          error = err;
+        }
       } finally {
         await runningServer.finalize();
       }
+    }
+    if (error) {
+      throw error;
     }
   };
 
