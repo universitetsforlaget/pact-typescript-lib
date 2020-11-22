@@ -1,6 +1,6 @@
 {
   "name": "@universitetsforlaget/pact",
-  "version": "0.2.1-SNAPSHOT",
+  "version": "0.3.0-SNAPSHOT",
   "description": "Pact framework utilities",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -21,8 +21,8 @@
     "typescript": "^3.3.4000"
   },
   "dependencies": {
-    "@pact-foundation/pact": "^8.2.0",
-    "@pact-foundation/pact-node": "^8.1.2",
+    "@pact-foundation/pact": "^9.13.0",
+    "@pact-foundation/pact-node": "^10.11.0",
     "bluebird": "^3.5.4",
     "rimraf": "^2.6.3"
   }
