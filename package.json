@@ -1,6 +1,6 @@
 {
   "name": "@universitetsforlaget/pact",
-  "version": "0.3.6-SNAPSHOT",
+  "version": "0.3.6",
   "description": "Pact framework utilities",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
