@@ -400,7 +400,7 @@
     unzipper "^0.10.10"
     url-join "^4.0.0"
 
-"@pact-foundation/pact@^9.16.1":
+"@pact-foundation/pact@9.16.1":
   version "9.16.1"
   resolved "https://registry.yarnpkg.com/@pact-foundation/pact/-/pact-9.16.1.tgz#ca19dd1e7266b994e60bbf696521274d13092580"
   integrity sha512-hknXmKy3uvZsJ2rJlazyUk1hJWnxRuxAFbMHZ/edWjxF2gmQO3xyA7SKFjgEhbghORcgLnK3308q/5rJFOfbQg==

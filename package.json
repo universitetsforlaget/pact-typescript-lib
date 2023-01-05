@@ -21,7 +21,7 @@
     "typescript": "^3.3.4000"
   },
   "dependencies": {
-    "@pact-foundation/pact": "^9.16.1",
+    "@pact-foundation/pact": "9.16.1",
     "@pact-foundation/pact-node": "^10.13.7",
     "bluebird": "^3.5.4",
     "rimraf": "^2.6.3"
