@@ -374,7 +374,7 @@
     "@types/istanbul-reports" "^1.1.1"
     "@types/yargs" "^13.0.0"
 
-"@pact-foundation/pact-node@^10.13.7":
+"@pact-foundation/pact-node@10.13.7", "@pact-foundation/pact-node@^10.13.7":
   version "10.13.7"
   resolved "https://registry.yarnpkg.com/@pact-foundation/pact-node/-/pact-node-10.13.7.tgz#5087a23bee8db3297e5c988bf5084cc836783109"
   integrity sha512-EhSo5t0QCW5CXdqXPtLo/tkAmAn0Phm7qNgPibh5p5+38Mdrjee77Muk1LVd/MjlW6NV5dH+zLAlD40z4CRelw==
